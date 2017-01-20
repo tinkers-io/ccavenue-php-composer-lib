@@ -1,0 +1,22 @@
+{
+    "name": "tinkers/ccavenue-php-composer-lib",
+    "description": "ccavenue composer enabled integration kit",
+    "type": "library",
+    "require": {
+        "php": "^5.4",
+        "ext-mcrypt": "^0.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sagar",
+            "email": "sagar@tinkers.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+      "psr-4": {
+        "tinkers\\ccavenue\\": ["src/"]
+      }
+    }
+}
