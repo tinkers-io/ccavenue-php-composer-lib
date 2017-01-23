@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "php": "^5.4",
-        "ext-mcrypt": "^0.0.0"
+        "ext-mcrypt": "^0.0.0",
+        "phpunit/phpunit": "4.8.*"
     },
     "license": "MIT",
     "authors": [
@@ -15,7 +16,7 @@
     ],
     "autoload": {
       "psr-4": {
-        "tinkers\\ccavenue\\": ["src/"]
+        "tinkers\\ccavenue\\": ["src/", "tests/"]
       }
     }
 }
