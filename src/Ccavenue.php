@@ -2,9 +2,7 @@
 
 namespace tinkers\ccavenue;
 
-use tinkers\ccavenue\billingpage\BillingPage;
-use tinkers\ccavenue\formcheckout\FormCheckout;
-use tinkers\ccavenue\iframecheckout\IframeCheckout;
+use tinkers\exceptions\CredentialNotSetException;
 use tinkers\exceptions\InvalidIntegrationMethodException;
 
 class CCAvenue
@@ -58,7 +56,7 @@ class CCAvenue
         else
             $this->baseUrl = 'https://test.ccavenue.com';
 
-        return $this->getInstance();
+        return $this;
 
     }
 
@@ -69,6 +67,9 @@ class CCAvenue
 
     public function getMerchantId ()
     {
+        if (empty($this->merchantId))
+            throw new CredentialNotSetException('merchant id not provided');
+
         return $this->merchantId;
     }
 
@@ -79,6 +80,9 @@ class CCAvenue
 
     public function getAccessCode ()
     {
+        if (empty($this->accessCode))
+            throw new CredentialNotSetException('access code not provided');
+
         return $this->accessCode;
     }
 
@@ -89,26 +93,15 @@ class CCAvenue
 
     public function getWorkingKey ()
     {
+        if (empty($this->workingKey))
+            throw new CredentialNotSetException('working key not provided');
+
         return $this->workingKey;
     }
 
     public function getPaymentStatus ()
     {
         return $this->paymentStatus;
-    }
-
-    protected function getInstance ()
-    {
-        switch ($this->method) {
-            case self::BILLING_PAGE:
-                return new BillingPage();
-            case self::IFRAME_CHECKOUT:
-                return new IframeCheckout();
-            case self::CHECKOUT_FORM;
-                return new FormCheckout();
-            default:
-                return new BillingPage();
-        }
     }
 
     public function requestGenerator ($requestData)
