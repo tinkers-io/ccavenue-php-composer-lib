@@ -30,7 +30,7 @@ add this inside your composer.json section: <br>
 <?php
 use tinkers\ccavenue\CCAvenue;
 
-$cCAvenue = new CCAvenue(CCAvenue::BILLING_PAGE, [
+$cCAvenue = new CCAvenue(CCAvenue::TYPE_BILLING_PAGE, [
             'merchant_id' => 'xxxxxx',
             'access_code' => 'xxxxxxxxxxxxxxxxx',
             'working_key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
