@@ -8,11 +8,11 @@ use tinkers\exceptions\InvalidIntegrationMethodException;
 class CCAvenue
 {
 
-    const BILLING_PAGE = "ccavenue_billing_page_non_seemless";
+    const TYPE_BILLING_PAGE = "ccavenue_billing_page_non_seemless";
 
-    const IFRAME_CHECKOUT = "ccavenue_iframe_checkout";
+    const TYPE_IFRAME_CHECKOUT = "ccavenue_iframe_checkout";
 
-    const CHECKOUT_FORM = "ccavenue_checkout_form";
+    const TYPE_CHECKOUT_FORM = "ccavenue_checkout_form";
 
     public $method;
 
@@ -109,11 +109,11 @@ class CCAvenue
 
         $merchantData = null;
 
-        if ($this->method == self::BILLING_PAGE || $this->method == self::IFRAME_CHECKOUT) {
+        if ($this->method == self::TYPE_BILLING_PAGE || $this->method == self::TYPE_IFRAME_CHECKOUT) {
             foreach ($requestData as $key => $value) {
                 $merchantData .= $key . '=' . $value . '&';
             }
-        } elseif ($this->method == self::CHECKOUT_FORM) {
+        } elseif ($this->method == self::TYPE_CHECKOUT_FORM) {
             foreach ($requestData as $key => $value) {
                 $merchantData .= $key . '=' . urlencode($value) . '&';
             }
@@ -121,7 +121,7 @@ class CCAvenue
 
         $encryptedData = Crypto::encrypt($merchantData, $this->workingKey);
 
-        return $this->method == self::IFRAME_CHECKOUT ?
+        return $this->method == self::TYPE_IFRAME_CHECKOUT ?
             [
                 'encrypted_data' => $encryptedData,
                 'access_code' => $this->accessCode,
