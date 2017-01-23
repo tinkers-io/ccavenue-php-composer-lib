@@ -13,7 +13,6 @@
             "email": "sagarguhe@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "autoload": {
       "psr-4": {
         "tinkers\\ccavenue\\": ["src/"]
